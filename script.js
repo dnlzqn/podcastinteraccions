@@ -5,7 +5,7 @@ const episodis = [
     resum: "Debatem com les grans empreses integren la intel·ligència artificial entre innovació i dominació.",
     participants: "Sofía, Karen, Aleix",
     data: "20/04/2025",
-    arxiu: "audio/1_Sofia.wav"
+    arxiu: "audio/1_Sofia.mp3"
   },
   {
     titol: "Realitat Virtual:<br> Promesa o Perill?",
@@ -19,7 +19,7 @@ const episodis = [
     resum: "Una conversa sobre els beneficis i els riscos psicològics, socials i laborals de la IA.",
     participants: "Rocío, Dariel, Aitana",
     data: "10/05/2025",
-    arxiu: "audio/3_Rocio.wav"
+    arxiu: "audio/3_Rocio.mp3"
   },
   {
     titol: "Art i IA.<br> Creativitat en Joc",
@@ -47,7 +47,7 @@ const episodis = [
     resum: "Reflexionem sobre autoria i sostenibilitat en un món d’il·lustració automatitzada.",
     participants: "Bruna, Charly, Leyre",
     data: "20/03/2025",
-    arxiu: "audio/7_Bruna.wav"
+    arxiu: "audio/7_Bruna.mp3"
   },
   {
     titol: "Minimalisme <br>VS Maximalisme",
