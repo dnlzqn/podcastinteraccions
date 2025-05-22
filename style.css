@@ -1,0 +1,861 @@
+/* === MOBILE FIRST (por defecto) === */
+
+body, html {
+  overflow-x: hidden;
+  cursor: url('Icons/raton.svg') 16 16, auto;
+}
+
+body {
+  margin: 0;
+  font-family: 'OffBit_Regular', sans-serif;
+  background: #282828;
+  color: #282828;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === FUENTES PERSONALIZADAS === */
+@font-face {
+  font-family: 'OffBit_Bold';
+  src: url('Tipos/OffBit-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'OffBit_Regular';
+  src: url('Tipos/OffBit-Regular.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* === HERO SECTION === */
+.hero {
+  text-align: center;
+  padding: 3em 1em;
+  background: #FCF6ED;
+  color: #FCF6ED;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7em;
+  position: relative;
+}
+
+.hero-logo {
+  width: 98vw; /* */
+  max-width: 98vw;
+  height: auto;
+  margin-bottom: 0.2em;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-family: 'OffBit_Bold', sans-serif;
+}
+
+.hero .subtitol {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: #000000;
+  font-weight: normal;
+}
+
+button#cta {
+  background: #FF3395;
+  color: #f0e7d8;
+  border: 2px solid #282828;
+  box-shadow: 8px 8px 0 #282828;
+  border-radius: 12px;
+  padding: 0.75em 0em;
+  font-size: 1.5em;
+  font-family: 'OffBit_Regular';
+  font-weight: 700;
+  cursor: pointer;
+  width: 220px;
+  transition: box-shadow 0.15s, background 0.15s, color 0.15s;
+  margin-top: 1em;
+}
+
+button#cta:hover,
+button#cta:focus {
+  background: #78FF78; /* verde neón */
+  color: #282828;
+  box-shadow: 6px 6px 0 #282828;
+  outline: none;
+}
+
+/* === HERO EMOJIS (CAPA FLOTANTE) === */
+.hero-floating-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Todos los emojis flotantes de la hero */
+.emoji {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Posiciones y tamaños MOBILE FIRST */
+.emoji-robot        { left: 8%;  top: 4%;  width: 100px; }
+.emoji-pantone      { right: 10%; top: 18%; width: 100px; }
+.emoji-converses    { left: 15%; bottom: 30%; width: 110px; }
+.emoji-clippy       { right: 4%;  top: 65%;  width: 120px; }
+.emoji-microfon     { left: 23%; bottom: 73%; width: 70px; }
+.emoji-manocorazon  { right: 45%; bottom: 9%; width: 130px; }
+.emoji-pincel       { left: 45%; top: 8%;  width: 70px; }
+
+/* === DESCRIPCIÓN PODCAST EMOJIS === */
+.desc-emojis {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 2;
+  gap: 0;
+}
+
+.emoji-bomba {
+  position: absolute;
+  left: 0.5em;
+  top: 3em;
+  width: 2em;
+  height: 2em;
+  opacity: 0.85;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+.emoji-smiley {
+  position: absolute;
+  left: 30%;
+  top: -4em;
+  width: 2em;
+  height: 2em;
+  opacity: 0.85;
+  will-change: transform, opacity;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+.emoji-taza {
+  position: absolute;
+  right: 0.5em;
+  top: -1.2em;
+  width: 2em;
+  height: 2em;
+  opacity: 0.85;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+/* === SOCIAL ICONS === */
+.social-icons {
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.3em;
+  padding: 1.2em 1.2em 0.5em 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  z-index: 200;
+}
+
+.icon-svg {
+  width: 2.2em;
+  height: 2.2em;
+  display: inline-block;
+  transition: transform 0.15s, filter 0.15s;
+  cursor: pointer;
+  filter: grayscale(0.2) brightness(0.95);
+}
+
+.icon-svg:hover,
+.icon-svg:focus {
+  transform: scale(1.13) rotate(-6deg);
+  filter: grayscale(0) brightness(1.2) drop-shadow(0 2px 8px #ff0aadaa);
+}
+
+main {
+  flex: 1 0 auto;
+  height: auto;
+}
+
+#llista-episodis {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  padding: 1em 1.5em 1em 1em; /* Más espacio a la derecha en mobile */
+  background: #FCF6ED;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.episodi {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px; /* Más alto para mobile */
+  cursor: pointer;
+  background: #FCF6ED;
+  border: 2px solid #282828;
+  border-radius: 18px; /* Más redondeado */
+  box-shadow: 12px 12px 0 #282828; /* Sombra negra más exagerada */
+  padding: 0;
+  margin-bottom: 1.5em;
+  font-family: 'OffBit_Regular';
+  transition: box-shadow 0.2s, border 0.2s;
+  box-sizing: border-box;
+  max-width: 100%;
+  color: #282828;
+}
+
+.episodi .portada {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  color: #282828;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.2em;
+  padding-top: 2.8em; /* Más espacio arriba para imagen y texto */
+  z-index: 2;
+  transition: opacity 0.3s;
+  opacity: 1;
+  pointer-events: auto;
+  border: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.episodi .portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #FCF6ED;
+  opacity: 0.3;
+  z-index: 1;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.episodi:hover .portada::before,
+.episodi:focus-within .portada::before {
+  opacity: 0;
+}
+
+/* TÍTULOS DE LAS PORTADAS EN MOBILE FIRST */
+.episodi .portada h2 {
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #282828;
+  font-family: 'OffBit_Bold';
+}
+
+.episodi .portada .resum {
+  font-family: inter, sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #282828;
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  text-align: left;
+  max-width: 100%;
+  line-height: 1.3em;
+}
+
+.portada-img {
+  /* Aquí puedes editar el tamaño, posición, margen, etc. de las imágenes de portada */
+  position: absolute;
+  inset: 0;
+  width: 120%;      /* Aumenta el tamaño de la imagen */
+  height: 140%;     /* Aumenta el tamaño de la imagen */
+  bottom: 12em;
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+  z-index: 0;
+  opacity: 1;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.episodi .portada h2,
+.episodi .portada .resum {
+  position: relative;
+  z-index: 2;
+  background: none;
+}
+
+.episodi .info {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  padding: 1.2em;
+  transition: opacity 0.3s;
+  color: #282828;
+  background: inherit;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  font-family: 'OffBit_Regular';
+  font-weight: 500;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+.episodi .info > p {
+  font-size: 1.5em;
+  font-weight: 500;
+  order: 1;
+  margin-top: 7.5em; /* Espacio divino que lo arregla todo*/
+
+}
+
+.data-podcast {
+  position: absolute;
+  right: 1.2em;
+  font-size: 1em;
+  color: #282828;
+  opacity: 0.5;
+  font-weight: 600;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  pointer-events: none;
+  font-family: "OffBit_Regular";
+}
+
+.episodi.mostra-info .portada {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.episodi.mostra-info .info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.episodi.actiu {
+  border: 2px solid #282828;
+  box-shadow: 8px 8px 0 #282828;
+}
+
+footer {
+  position: relative;
+  padding: 1em;
+  width: 100%;
+  max-width: 100vw;
+  background: #FCF6ED;
+  color: #282828;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'OffBit_Regular', sans-serif;
+  box-sizing: border-box;
+}
+
+.footer-logo {
+  width: 18vw;
+  max-width: 70em;
+  min-width: 10em;
+  height: auto;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.descripcio-podcast {
+  background: #FCF6ED;
+  color: #282828;
+  padding: 1em 1em 2em 1em;
+  text-align: left;
+  font-family: 'OffBit_Regular', sans-serif;
+  position: relative;
+}
+
+.descripcio-podcast h2 {
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 800;
+  line-height: 1.05;
+  font-family: 'OffBit_Bold';
+  color: #282828;
+}
+
+.desc-emojis {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 2;
+  gap: 0;
+  /* No uses gap aquí, se reparte con left/right */
+}
+
+
+
+/* === AUDIO PLAYER MOBILE FIRST === */
+.audio-custom {
+  background: #FCF6ED;
+  border: 2px solid #282828;
+  box-shadow: 8px 8px 0 #282828;
+  border-radius: 12px;
+  padding: 0.7em 0.3em;
+  display: flex;
+  flex-direction: row; /* Siempre horizontal */
+  align-items: center;
+  gap: 0.3em;
+  min-width: 0;
+  max-width: 100%;
+  position: relative;
+  font-family: 'OffBit_Regular';
+  flex-wrap: nowrap;
+  order: 2;
+}
+
+.audio-custom .play-btn {
+  margin: 0;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  background: #FCF6ED;
+  border: 2px solid #282828;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.audio-custom .play-btn:hover {
+  background: #f0e7d8;
+}
+
+.audio-custom .play-icon,
+.audio-custom .pause-icon {
+  width: 15px;
+  height: 15px;
+  display: block;
+  fill: #282828;
+}
+
+.audio-custom .progress-bar-container {
+  flex: 1 1 120px;
+  min-width: 90px;
+  height: 7px;
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 0.8em 0 0;
+}
+
+.audio-custom .progress-bar-bg {
+  width: 100%;
+  height: 20px;
+  background: #232323;
+  border: solid 0.2px #232323;
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.audio-custom .progress-bar {
+  height: 7px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: width 0.1s;
+  z-index: 1;
+}
+
+.audio-custom .progress-knob {
+  width: 16px;
+  height: 30px;
+  background: #FCF6ED;
+  border: 2px solid #262626;
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  z-index: 2;
+  transition: left 0.1s;
+}
+
+.audio-custom .time {
+  font-size: 1em;
+  color: #282828;
+  min-width: 20px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  font-family: 'OffBit_Regular';
+}
+
+/* COLORES PERSONALIZADOS PARA CADA CAJA */
+.bg-verde    { background: #78FF78 !important; }
+.bg-azul     { background: #2E2EFF !important; }
+.bg-amarillo { background: #FFDB45 !important; }
+.bg-rosa     { background: #FF3395 !important; }
+
+/* Asegura que portada e info heredan el fondo de la caja */
+.episodi .portada,
+.episodi .info {
+  background: inherit;
+}
+
+/* Texto blanco en tarjetas azules y rosas cuando se muestra la info */
+.bg-azul .info,
+.bg-rosa .info {
+  color: #FFF3E1;
+}
+.bg-azul .info .data-podcast,
+.bg-rosa .info .data-podcast {
+  color: #FFF3E1;
+  opacity: 0.85;
+}
+
+/* Texto personalizado */
+.txt-amarillo { color: #fcd539; font-weight: 800; transition: color 0.2s; }
+.txt-rosa     { color: #FF3395; font-weight: 800; transition: color 0.2s; }
+.txt-azul     { color: #2E2EFF; font-weight: 800; transition: color 0.2s; }
+.txt-verde    { color: #59ff59; font-weight: 800; transition: color 0.2s; }
+
+.txt-amarillo:hover { color: #c7a800; }
+.txt-rosa:hover     { color: #b80060; }
+.txt-azul:hover     { color: #1a1a99; }
+.txt-verde:hover    { color: #3bbf3b; }
+
+/* === PC/ESCRITORIO === */
+@media (min-width: 768px) {
+  /* PC: Hero más grande */
+  .hero h1 {
+    font-size: 4em;
+  }
+
+  /* PC: Dos columnas para episodios */
+  #llista-episodis {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+  }
+
+  /* PC: Episodios más altos */
+  .episodi {
+    min-height: 340px; /* Más alto para escritorio */
+  }
+
+  /* PC: Descripción con más padding */
+  .descripcio-podcast {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+  }
+  .descripcio-podcast h2 {
+    font-size: 3.2em;
+  }
+
+  /* PC: Audio player horizontal */
+  .audio-custom {
+    gap: 1.2em;
+    padding: 1em 1.5em;
+  }
+  .audio-custom .play-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  .audio-custom .play-icon,
+  .audio-custom .pause-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .audio-custom .progress-bar-container {
+    min-width: 90px;
+    height: 8px;
+  }
+  .audio-custom .progress-bar-bg,
+  .audio-custom .progress-bar {
+    height: 20px;
+  }
+  .audio-custom .progress-knob {
+    width: 16px;
+    height: 30px;
+    border-width: 2px;
+  }
+  .audio-custom .time {
+    font-size: 0.95em;
+    min-width: 54px;
+    margin-left: 0;
+  }
+  .episodi .portada {
+    padding-top: 4em; /* Más espacio arriba para escritorio */
+  }
+  /* TÍTULOS DE LAS PORTADAS EN PC/ESCRITORIO */
+  .episodi .portada h2 {
+    font-size: 3.5em;
+    word-break: break-word;
+    margin: 0 0 0.5em 0;
+    padding-left: 0;
+  }
+  
+  .episodi .portada .resum {
+    font-size: 1.35em;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    line-height: 1.4;
+  }
+
+  .portada-img {
+    max-width: 44em;   /* Más grande en PC */
+    max-height: 100em;
+    width: 140%;
+    height: 140%;
+    margin-bottom: 0;
+  }
+  .footer-logo {
+    width: 80em;
+    max-width: 90em;
+    right: 2.5em;
+    bottom: 2em;
+  }
+  footer {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .footer-logo {
+    position: absolute;
+    right: 4em;
+    bottom: 2em;
+    margin-top: 0;
+    width: 80px;
+    max-width: 90em;
+    min-width: 10em;
+  }
+  .desc-emojis {
+    top: 1.2em;
+    right: 1.5em;
+    gap: 1em;
+  }
+  .emoji-bomba,
+  .emoji-smiley,
+  .emoji-taza {
+    width: 2.8em;
+    height: 2.8em;
+  }
+  .emoji-bomba,
+  .emoji-smiley,
+  .emoji-taza {
+    width: 2.8em;
+    height: 2.8em;
+  }
+
+  /* HERO EMOJIS PC */
+  .emoji-robot        { left: 2%;  top: 2%;  width: 170px; }
+  .emoji-pantone      { right: 14%; top: 18%; width: 160px; }
+  .emoji-converses    { left: 20%; bottom: 8%; width: 90px; }
+  .emoji-clippy       { right: 6%;  top: 62%;  width: 200px; }
+  .emoji-microfon     { left: 60%; bottom: 10%; width: 140px; }
+  .emoji-manocorazon  { right: 20%; bottom: 7%; width: 100px; }
+  .emoji-pincel       { left: 48%; top: 4%;  width: 120px; }
+  .emoji-bomba,
+  .emoji-smiley,
+  .emoji-taza {
+    width: 4em;
+    height: 4em;
+  }
+
+  /* DESCRIPCIÓN PODCAST EMOJIS PC */
+  .desc-emojis {
+    top: 1.2em;
+    right: 1.5em;
+    gap: 1em;
+  }
+  .emoji-bomba {
+    left: 1.5em;
+    top: -2.2em;
+    width: 2.8em;
+    height: 2.8em;
+  }
+  .emoji-smiley {
+    left: 50%;
+    top: -2.5em;
+    width: 2.8em;
+    height: 2.8em;
+    transform: translateX(-50%);
+  }
+  .emoji-taza {
+    right: 1.5em;
+    top: -2.2em;
+    width: 2.8em;
+    height: 2.8em;
+  }
+
+  /* SOCIAL ICONS PC */
+  .social-icons {
+    top: 2em;
+    right: 2.5em;
+    left: auto;
+    gap: 2.5em;
+    padding: 0;
+  }
+  .icon-svg {
+    width: 2.8em;
+    height: 2.8em;
+  }
+
+  .hero .subtitol {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+.hero-logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7em;
+  position: relative;
+}
+
+.hero-logo {
+  width: 80em;
+  max-width: 70vw;
+  height: auto;
+  margin-bottom: 0.2em;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.floating-emojis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.emoji {
+  position: absolute;
+  opacity: 0;
+  /* Para que la animación GSAP funcione bien */
+  will-change: transform, opacity;
+}
+
+
+.social-icons {
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.3em;
+  padding: 1.2em 1.2em 0.5em 0;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  z-index: 200;
+}
+
+.icon-svg {
+  width: 2.2em;
+  height: 2.2em;
+  display: inline-block;
+  transition: transform 0.15s, filter 0.15s;
+  cursor: pointer;
+  filter: grayscale(0.2) brightness(0.95);
+}
+
+.icon-svg:hover,
+.icon-svg:focus {
+  transform: scale(1.13) rotate(-6deg);
+  filter: grayscale(0) brightness(1.2) drop-shadow(0 2px 8px #ff0aadaa);
+}
+
+@media (min-width: 768px) {
+  .social-icons {
+    top: 2em;
+    right: 2.5em;
+    left: auto;
+    gap: 2.5em;
+    padding: 0;
+  }
+  .icon-svg {
+    width: 2.8em;
+    height: 2.8em;
+  }
+}
+
+/* Aplicar cursor personalizado globalmente */
+*, 
+*::before, 
+*::after,
+button,
+a,
+.episodi,
+.play-btn,
+.progress-bar-container {
+  cursor: url('Icons/raton.svg') 16 16, auto !important;
+}
+
+/* Tamaño y posición de los iconos flotantes en HERO */
+/* Puedes cambiar left/top/right/bottom y width para ajustar manualmente */
+

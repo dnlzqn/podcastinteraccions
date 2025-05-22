@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaccions · Podcasts</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section class="social-icons">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="Icons/instagram.svg" alt="Instagram" class="icon-svg">
+    </a>
+    <a href="https://soundcloud.com/" target="_blank" rel="noopener" aria-label="SoundCloud">
+      <img src="Icons/cloud.svg" alt="SoundCloud" class="icon-svg">
+    </a>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+      <img src="Icons/youtube.svg" alt="YouTube" class="icon-svg">
+    </a>
+  </section>
+  <header class="hero">
+    <div class="hero-logo-title">
+      <!-- Corrige el nombre del logotipo y asegúrate de que la ruta y extensión sean correctas -->
+      <img src="IMG/Logo1.svg" alt="Logotipo Interaccions" class="hero-logo">
+    </div>
+    <!-- Capa invisible para posicionar y mover los iconos libremente -->
+    <div class="hero-floating-layer">
+      <img src="Icons/robot.svg" alt="Robot" class="emoji emoji-robot">
+      <img src="Icons/pantone.svg" alt="Pantone" class="emoji emoji-pantone">
+      <img src="Icons/converses.svg" alt="Converses" class="emoji emoji-converses">
+      <img src="Icons/clippy.svg" alt="Clippy" class="emoji emoji-clippy">
+      <img src="Icons/microfon.svg" alt="Micrófono" class="emoji emoji-microfon">
+      <img src="Icons/manocorazon.svg" alt="Mano corazón" class="emoji emoji-manocorazon">
+      <img src="Icons/pincel.svg" alt="Pincel" class="emoji emoji-pincel">
+    </div>
+    <p class="subtitol">Converses on l'art i el disseny dialoguen amb la Inteligència Artificial i la Tecnologia</p>
+    <button id="cta">Escoltal's</button>
+  </header>
+
+  <section class="descripcio-podcast">
+    <div class="desc-emojis">
+      <img src="Icons/bomba.svg" alt="Bomba" class="emoji-bomba">
+      <img src="Icons/smiley.svg" alt="Smiley" class="emoji-smiley">
+      <img src="Icons/taza.svg" alt="Taza" class="emoji-taza">
+    </div>
+    <h2>
+      Espai on joves creadors connecten amb <br> l'
+      <span class="txt-amarillo">art</span>, i el
+      <span class="txt-rosa">disseny</span> VS
+      <span class="txt-azul">tecnologia</span> i
+      <span class="txt-verde">intel·ligència artificial</span>
+      <br>per explorar temàtiques controversials.
+    </h2>
+  </section>
+
+  <main>
+    <section id="llista-episodis"></section>
+  </main>
+
+  <footer>
+    <p>©2025 Podcast Interaccions</p>
+    <img src="IMG/EADT.png" alt="Logotipo" class="footer-logo">
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Animación de entrada y flotación para los iconos de la hero
+    window.addEventListener('DOMContentLoaded', () => {
+      // Entrada con scale
+      gsap.fromTo('.emoji-robot', {scale:0, y:40, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.2, ease:"back.out(1.7)"});
+      gsap.fromTo('.emoji-pantone', {scale:0, y:40, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.4, ease:"back.out(1.7)"});
+      gsap.fromTo('.emoji-converses', {scale:0, y:40, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.6, ease:"back.out(1.7)"});
+      gsap.fromTo('.emoji-clippy', {scale:0, y:-40, opacity:0}, {scale:1.25, y:0, opacity:1, duration:1.2, delay:0.1, ease:"back.out(1.7)"});
+
+      // Flotación suave
+      gsap.to('.emoji-robot', {y: "+=12", repeat: -1, yoyo: true, duration: 2.2, ease: "sine.inOut"});
+      gsap.to('.emoji-pantone', {y: "-=10", repeat: -1, yoyo: true, duration: 2.6, ease: "sine.inOut"});
+      gsap.to('.emoji-converses', {y: "+=8", repeat: -1, yoyo: true, duration: 2.1, ease: "sine.inOut"});
+      gsap.to('.emoji-clippy', {y: "-=18", repeat: -1, yoyo: true, duration: 2.8, ease: "sine.inOut"});
+
+      // Animación de entrada y flotación para los emojis de la descripción
+      gsap.fromTo('.emoji-bomba', {scale:0, y:30, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.3, ease:"back.out(1.7)"});
+      gsap.fromTo('.emoji-smiley', {scale:0, y:30, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.5, ease:"back.out(1.7)"});
+      gsap.fromTo('.emoji-taza', {scale:0, y:30, opacity:0}, {scale:1, y:0, opacity:1, duration:1, delay:0.7, ease:"back.out(1.7)"});
+
+      gsap.to('.emoji-bomba', {y: "+=10", repeat: -1, yoyo: true, duration: 2.2, ease: "sine.inOut"});
+      gsap.to('.emoji-smiley', {y: "-=8", repeat: -1, yoyo: true, duration: 2.5, ease: "sine.inOut"});
+      gsap.to('.emoji-taza', {y: "+=7", repeat: -1, yoyo: true, duration: 2.1, ease: "sine.inOut"});
+    });
+  </script>
+</body>
+</html>
+
+<!--Converses controversials sobre disseny, art i inteligencia artificial-->
