@@ -393,10 +393,8 @@ footer {
 }
 
 .footer-logo {
-  width: 34vw;
-/*   max-width: 70em;
-  min-width: 10em; */
-  height: auto;
+  width: 230px;
+  height: 80px;
   z-index: 10;
   box-sizing: border-box;
 }
@@ -681,7 +679,7 @@ footer {
     right: 4em;
     bottom: 2em;
     margin-top: 0;
-    width: 440px;
+    width: 230px;
 /*     max-width: 90em;
     min-width: 10em; */
   }
@@ -857,4 +855,3 @@ a,
 
 /* Tamaño y posición de los iconos flotantes en HERO */
 /* Puedes cambiar left/top/right/bottom y width para ajustar manualmente */
-
