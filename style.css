@@ -245,7 +245,7 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.2em;
-  padding-top: 2.8em; /* Más espacio arriba para imagen y texto */
+/*  padding-top: 2.8em; /* Más espacio arriba para imagen y texto */
   z-index: 2;
   transition: opacity 0.3s;
   opacity: 1;
@@ -363,13 +363,30 @@ main {
 }
 
 .episodi.mostra-info .portada {
+  opacity: 1;
+  pointer-events: none;
+  justify-content: flex-start;
+}
+
+.episodi.mostra-info .portada img  {
   opacity: 0;
   pointer-events: none;
+}
+
+.episodi.mostra-info .portada h2 {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.episodi.mostra-info .portada p {
+    font-size: .9em;
 }
 
 .episodi.mostra-info .info {
   opacity: 1;
   pointer-events: auto;
+  background:   transparent;
+  z-index: 4;
 }
 
 .episodi.actiu {
@@ -639,7 +656,7 @@ footer {
     margin-left: 0;
   }
   .episodi .portada {
-    padding-top: 4em; /* Más espacio arriba para escritorio */
+/*    padding-top: 4em; /* Más espacio arriba para escritorio */
   }
   /* TÍTULOS DE LAS PORTADAS EN PC/ESCRITORIO */
   .episodi .portada h2 {
