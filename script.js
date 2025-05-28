@@ -86,7 +86,7 @@ episodis.forEach((epi, i) => {
     </div>
     <div class="info">
       <p><strong>Participants</strong></br> ${epi.participants}</p>
-      <audio src="${epi.arxiu}"></audio>
+      <audio preload="none" data-src="${epi.arxiu}"></audio>
       <div class="audio-custom">
         <div class="play-btn">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
@@ -138,7 +138,19 @@ episodis.forEach((epi, i) => {
   // --- Audio Custom Controls ---
   let dragging = false;
 
+  // playBtn.addEventListener('click', () => {
+  //   if (audio.paused) {
+  //     audio.play();
+  //   } else {
+  //     audio.pause();
+  //   }
+  // });
+
   playBtn.addEventListener('click', () => {
+    if (!audio.src) {
+      audio.src = audio.dataset.src;
+      audio.load();
+    }
     if (audio.paused) {
       audio.play();
     } else {
