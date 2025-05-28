@@ -74,6 +74,19 @@ const colors = [
   "bg-rosa"     // 8
 ];
 
+// Afegeix estils per hover del cursor personalitzat
+document.addEventListener("DOMContentLoaded", () => {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .play-btn:hover,
+    .progress-bar-container:hover,
+    .portada:hover {
+      cursor: url('Icons/pointer.svg'), auto;
+    }
+  `;
+  document.head.appendChild(style);
+});
+
 // Generació dels elements
 episodis.forEach((epi, i) => {
   const div = document.createElement("div");
