@@ -873,6 +873,9 @@ a,
 /* Tamaño y posición de los iconos flotantes en HERO */
 /* Puedes cambiar left/top/right/bottom y width para ajustar manualmente */
 
-.cursor-pointer {
+.episodi .play-btn:hover,
+.episodi .progress-bar-container:hover,
+.episodi .portada:hover,
+.episodi audio:hover {
   cursor: url('Icons/pointer.svg'), auto;
 }
