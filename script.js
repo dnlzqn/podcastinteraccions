@@ -182,6 +182,7 @@ episodis.forEach((epi, i) => {
   });
 
   progressBarContainer.addEventListener('mousedown', function(e) {
+    e.preventDefault();
     dragging = true;
     moveKnob(e);
     document.addEventListener('mousemove', moveKnob);
@@ -196,9 +197,7 @@ episodis.forEach((epi, i) => {
     progressBar.style.width = (percent * 100) + '%';
     progressKnob.style.left = (percent * 100) + '%';
     time.textContent = formatTime(percent * audio.duration);
-    if (dragging) {
-      audio.currentTime = percent * audio.duration;
-    }
+    audio.currentTime = percent * audio.duration;
   }
 
   function stopDrag() {
