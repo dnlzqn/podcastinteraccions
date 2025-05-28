@@ -81,7 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .episodi:hover,
     .play-btn:hover,
     .progress-knob:hover,
-    .progress-bar-bg:hover
+    .progress-bar-bg:hover,
+    .portada h2:hover,
+    .portada p:hover,
     {
       cursor: url('Icons/pointer.svg'), auto;
     }
