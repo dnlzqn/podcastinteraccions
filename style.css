@@ -870,6 +870,10 @@ a,
   cursor: url('Icons/raton.svg') 16 16, auto !important;
 }
 
+.progress-bar-container {
+  touch-action: none;
+}
+
 /* Tamaño y posición de los iconos flotantes en HERO */
 /* Puedes cambiar left/top/right/bottom y width para ajustar manualmente */
 
@@ -877,5 +881,5 @@ a,
 .episodi .progress-bar-container:hover,
 .episodi .portada:hover,
 .episodi audio:hover {
-  cursor: url('Icons/pointer.svg'), auto;
+  cursor: url('Icons/pointer.svg') 16 16, auto !important;
 }
