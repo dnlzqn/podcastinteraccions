@@ -78,9 +78,11 @@ const colors = [
 document.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");
   style.innerHTML = `
+    .episodi:hover,
     .play-btn:hover,
-    .progress-bar-container:hover,
-    .portada:hover {
+    .progress-knob:hover,
+    .progress-bar-bg:hover
+    {
       cursor: url('Icons/pointer.svg'), auto;
     }
   `;
