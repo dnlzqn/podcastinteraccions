@@ -189,6 +189,14 @@ episodis.forEach((epi, i) => {
     document.addEventListener('mouseup', stopDrag);
   });
 
+  progressBarContainer.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  dragging = true;
+  moveKnob(e.touches[0]); // usamos el primer toque
+  document.addEventListener('touchmove', onTouchMove);
+  document.addEventListener('touchend', stopTouchDrag);
+});
+
   function moveKnob(e) {
     const rect = progressBarContainer.getBoundingClientRect();
     let x = e.clientX - rect.left;
@@ -200,11 +208,15 @@ episodis.forEach((epi, i) => {
     audio.currentTime = percent * audio.duration;
   }
 
-  function stopDrag() {
-    dragging = false;
-    document.removeEventListener('mousemove', moveKnob);
-    document.removeEventListener('mouseup', stopDrag);
-  }
+function onTouchMove(e) {
+  moveKnob(e.touches[0]);
+}
+
+function stopTouchDrag() {
+  dragging = false;
+  document.removeEventListener('touchmove', onTouchMove);
+  document.removeEventListener('touchend', stopTouchDrag);
+}
 
   function formatTime(sec) {
     if (isNaN(sec)) return '0:00';
