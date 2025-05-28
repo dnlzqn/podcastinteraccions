@@ -205,7 +205,9 @@ episodis.forEach((epi, i) => {
     progressBar.style.width = (percent * 100) + '%';
     progressKnob.style.left = (percent * 100) + '%';
     time.textContent = formatTime(percent * audio.duration);
-    audio.currentTime = percent * audio.duration;
+    if (!isNaN(audio.duration)) {
+      audio.currentTime = percent * audio.duration;
+    }
   }
 
 function onTouchMove(e) {
