@@ -232,6 +232,12 @@ function stopTouchDrag() {
   document.removeEventListener('touchend', stopTouchDrag);
 }
 
+  function stopDrag() {
+  dragging = false;
+  document.removeEventListener('mousemove', moveKnob);
+  document.removeEventListener('mouseup', stopDrag);
+}
+
   function formatTime(sec) {
     if (isNaN(sec)) return '0:00';
     sec = Math.floor(sec);
