@@ -111,6 +111,7 @@ episodis.forEach((epi, i) => {
         </div>
         <div class="progress-bar-container">
           <div class="progress-bar-bg"></div>
+          <div class="progress-buffer" style="width:0%"></div>
           <div class="progress-bar" style="width:0%"></div>
           <div class="progress-knob" style="left:0%"></div>
         </div>
@@ -130,6 +131,7 @@ episodis.forEach((epi, i) => {
   const progressKnob = audioCustom.querySelector('.progress-knob');
   const progressBarContainer = audioCustom.querySelector('.progress-bar-container');
   const time = audioCustom.querySelector('.time');
+  const progressBuffer = div.querySelector('.progress-buffer');
 
   // Mostrar info al clicar la portada
   portada.addEventListener("click", e => {
@@ -219,12 +221,20 @@ episodis.forEach((epi, i) => {
   });
 
   progressBarContainer.addEventListener('touchstart', function(e) {
-  e.preventDefault();
-  dragging = true;
-  moveKnob(e.touches[0]); // usamos el primer toque
-  document.addEventListener('touchmove', onTouchMove);
-  document.addEventListener('touchend', stopTouchDrag);
-});
+    e.preventDefault();
+    dragging = true;
+    moveKnob(e.touches[0]); // usamos el primer toque
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('touchend', stopTouchDrag);
+  });
+
+  audio.addEventListener('progress', () => {
+    if (audio.buffered.length > 0 && audio.duration > 0) {
+    const bufferedEnd = audio.buffered.end(audio.buffered.length - 1);
+    const percentBuffered = (bufferedEnd / audio.duration) * 100;
+    progressBuffer.style.width = percentBuffered + '%';
+    }
+  });
 
   function moveKnob(e) {
     const rect = progressBarContainer.getBoundingClientRect();
